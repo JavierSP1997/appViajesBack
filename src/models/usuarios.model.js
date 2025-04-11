@@ -8,7 +8,7 @@ const insert = async ({ nombre, email, password, fecha_registro }) => {
     return result;
 };
 
-const selectId = async (usuarioId) => {
+const selectById = async (usuarioId) => {
     const [result] = await db.query(
         "select * from usuarios where id_usuario = ?",
         [usuarioId],
@@ -39,7 +39,7 @@ const deleteById = async (usuariosId) => {
 
 module.exports = {
     insert,
-    selectId,
+    selectById,
     updateById,
     deleteById,
 };

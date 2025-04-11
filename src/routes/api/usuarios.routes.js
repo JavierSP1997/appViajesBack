@@ -7,7 +7,6 @@ const {
 } = require("../../controllers/usuarios.controller");
 const { checkUsuarioId } = require("../../middleware/usuario.middleware");
 
-router.get("/");
 router.post("/", register);
 
 router.put("/:usuarioId", checkUsuarioId, updateUser);
