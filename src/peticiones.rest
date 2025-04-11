@@ -8,18 +8,18 @@ POST {{host}}{{port}}/api/usuarios
 Content-Type: application/json
 
 {
-    "nombre": "Uriberto",
-    "email": "mimama@gmail.com",
+    "nombre": "raul",
+    "email": "raul@gmail.com",
     "password": "1122211"
 }
 
-### //Login
+### logar un usuario existente
 POST {{host}}{{port}}/api/usuarios/login
 Content-Type: application/json
 
 {
-    "nombre": "Uriberto",
-    "email": "mimama@gmail.com",
+    "nombre": "raul",
+    "email": "raul@gmail.com",
     "password": "1122211"
 }
 
