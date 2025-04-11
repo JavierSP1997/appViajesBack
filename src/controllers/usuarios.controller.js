@@ -8,4 +8,14 @@ const getAll = async (req, res, next) => {
     }
 };
 
-module.exports = { getAll };
+const register = async (req, res, next) => {
+    try {
+        const result = await usuariosModel.insert(req.body);
+        const usuario = await usuariosModel.selectById(result.insertId);
+        res.json(usuario);
+    } catch (error) {
+        next(error);
+    }
+};
+
+module.exports = { getAll, register };

@@ -5,4 +5,12 @@ const selectAll = async () => {
     return result;
 };
 
-module.exports = { selectAll };
+const insert = async ({ nombre, email, password, fecha_registro }) => {
+    const [result] = await db.query(
+        "insert into usuarios (nombre, email, password, fecha_registro) values (?, ?, ?, ?)",
+        [nombre, email, password, fecha_registro],
+    );
+    return result;
+};
+
+module.exports = { selectAll, insert };

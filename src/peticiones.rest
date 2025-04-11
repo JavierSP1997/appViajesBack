@@ -1,2 +1,14 @@
 ###
 GET http://localhost:3000/api/usuarios
+
+###
+POST http://localhost:3000/api/usuarios
+Content-Type: application/json
+
+{
+    "nombre": "Ruben",
+    "email": "rubencito@gmail.com",
+    "password": 45678,
+    "fecha_registro": "2025-04-11"
+
+}
