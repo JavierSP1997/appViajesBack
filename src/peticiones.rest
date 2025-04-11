@@ -1,2 +1,5 @@
 ###
 GET http://localhost:3000/api/usuarios
+
+###
+DELETE http://localhost:3000/api/usuarios/1

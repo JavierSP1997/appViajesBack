@@ -5,4 +5,20 @@ const selectAll = async () => {
     return result;
 };
 
-module.exports = { selectAll };
+const selectId = async (usuariosId) => {
+    const [result] = await db.query("select * from usuarios where id_usuario = ?", [
+        usuariosId,
+    ]);
+    if (result.length === 0) return null;
+    return result[0];
+}
+
+const deleteById = async (usuariosId) => {
+    const id = Number(usuariosId);
+    const [result] = await db.query("DELETE FROM usuarios WHERE id_usuario = ?", [id]);
+    return result;
+};
+
+module.exports = { 
+    selectAll,
+    deleteById, selectId };

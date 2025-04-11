@@ -1,7 +1,9 @@
 const router = require("express").Router();
 
-const { getAll } = require("../../controllers/usuarios.controller");
+const { getAll, remove } = require("../../controllers/usuarios.controller");
 
 router.get("/", getAll);
+
+router.delete("/:usuarioId", remove);
 
 module.exports = router;
