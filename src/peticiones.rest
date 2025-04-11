@@ -1,6 +1,8 @@
 @host = http://localhost:
 @port = 3000
 
+### Usuarios API ###
+
 ### insertar un nuevo usuario
 POST {{host}}{{port}}/api/usuarios
 Content-Type: application/json
@@ -11,6 +13,16 @@ Content-Type: application/json
     "password": 45678,
     "fecha_registro": "2025-04-11"
 
+}
+
+### //Login
+POST {{host}}{{port}}/api/usuarios/login
+Content-Type: application/json
+
+{
+    "nombre": "Gian",
+    "email": "gian@gmail.com",
+    "password": "12345"
 }
 
 ### Editar un usuario existente
@@ -26,3 +38,9 @@ Content-Type: application/json
 
 ### borrar un usuario existente
 DELETE {{host}}{{port}}/api/usuarios/3
+
+
+
+
+
+
