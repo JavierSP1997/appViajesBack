@@ -25,13 +25,10 @@ const selectByEmail = async (email) => {
   return result[0];
 };
 
-const updateById = async (
-  usuarioId,
-  { nombre, email, password, fecha_registro }
-) => {
+const updateById = async (usuarioId, { nombre, email, password }) => {
   const [result] = await db.query(
-    "UPDATE usuarios SET nombre = ?, email = ?, password = ?, fecha_registro = ? WHERE id_usuario = ?",
-    [nombre, email, password, fecha_registro, usuarioId]
+    "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id_usuario = ?",
+    [nombre, email, password, usuarioId]
   );
   return result;
 };

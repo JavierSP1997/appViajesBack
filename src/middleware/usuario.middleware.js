@@ -9,7 +9,7 @@ const checkUsuarioId = async (req, res, next) => {
       .json({ message: "el id del usuario debe ser numerico" });
   }
 
-  const usuario = await usuariosModel.selectId(usuarioId);
+  const usuario = await usuariosModel.selectById(usuarioId);
   if (!usuario) {
     return res.status(404).json({ message: "El usuario no existe" });
   }
