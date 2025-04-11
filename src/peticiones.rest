@@ -1,11 +1,20 @@
 @host = http://localhost:
 @port = 3000
 
-###
-GET {{host}}{{port}}/api/usuarios 
+### insertar un nuevo usuario
+POST {{host}}{{port}}/api/usuarios
+Content-Type: application/json
 
-###
-PUT {{host}}{{port}}/api/usuarios/1
+{
+    "nombre": "Ruben",
+    "email": "rubencitossss@gmail.com",
+    "password": 45678,
+    "fecha_registro": "2025-04-11"
+
+}
+
+### Editar un usuario existente
+PUT {{host}}{{port}}/api/usuarios/3
 Content-Type: application/json
 
 {
@@ -15,17 +24,5 @@ Content-Type: application/json
     "fecha_registro": "2023-10-01"
 }
 
-###
-POST {{host}}{{port}}/api/usuarios
-Content-Type: application/json
-
-{
-    "nombre": "Ruben",
-    "email": "rubencito@gmail.com",
-    "password": 45678,
-    "fecha_registro": "2025-04-11"
-
-}
-
-###
-DELETE {{host}}{{port}}/api/usuarios/1
+### borrar un usuario existente
+DELETE {{host}}{{port}}/api/usuarios/3
