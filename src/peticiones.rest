@@ -1,8 +1,22 @@
-###
-GET http://localhost:3000/api/usuarios
+@host = http://localhost:
+@port = 3000
 
 ###
-POST http://localhost:3000/api/usuarios
+GET {{host}}{{port}}/api/usuarios 
+
+###
+PUT {{host}}{{port}}/api/usuarios/1
+Content-Type: application/json
+
+{
+    "nombre": "juan",
+    "email": "juan@gmail.com" ,
+    "password": "123456",
+    "fecha_registro": "2023-10-01"
+}
+
+###
+POST {{host}}{{port}}/api/usuarios
 Content-Type: application/json
 
 {
@@ -14,4 +28,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/usuarios/1
+DELETE {{host}}{{port}}/api/usuarios/1

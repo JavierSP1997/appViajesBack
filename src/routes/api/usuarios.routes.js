@@ -1,14 +1,16 @@
 const router = require("express").Router();
 
 const {
-    getAll,
-    remove,
     register,
+    updateUser,
+    remove,
 } = require("../../controllers/usuarios.controller");
+const { checkUsuarioId } = require("../../middleware/usuario.middleware");
 
-router.get("/", getAll);
+router.get("/");
 router.post("/", register);
 
+router.put("/:usuarioId", checkUsuarioId, updateUser);
 router.delete("/:usuarioId", remove);
 
 module.exports = router;
