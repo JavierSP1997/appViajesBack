@@ -8,33 +8,56 @@ POST {{host}}{{port}}/api/usuarios
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "nombre": "cc",
     "email": "cc@gmail.com",
+=======
+    "nombre": "raul",
+    "email": "raul@gmail.com",
+>>>>>>> 30e93da58a152894caebc42c9f40b49cf52a3365
     "password": "1122211"
 }
 
-### //Login
+### logar un usuario existente
 POST {{host}}{{port}}/api/usuarios/login
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "nombre": "cc",
     "email": "cc@gmail.com",
+=======
+    "nombre": "raul",
+    "email": "raul@gmail.com",
+>>>>>>> 30e93da58a152894caebc42c9f40b49cf52a3365
     "password": "1122211"
 }
 
 ### Editar un usuario existente
+<<<<<<< HEAD
 PUT {{host}}{{port}}/api/usuarios/7
 Content-Type: application/json
 
 {
     "nombre": "jjuan",
     "email": "jjuan@gmail.com" ,
+=======
+PUT {{host}}{{port}}/api/usuarios/5
+Content-Type: application/json
+
+{
+    "nombre": "juan",
+    "email": "juan@gmail.com" ,
+>>>>>>> 30e93da58a152894caebc42c9f40b49cf52a3365
     "password": "123456"
 }
 
 ### borrar un usuario existente
+<<<<<<< HEAD
 DELETE {{host}}{{port}}/api/usuarios/9
+=======
+DELETE {{host}}{{port}}/api/usuarios/5
+>>>>>>> 30e93da58a152894caebc42c9f40b49cf52a3365
 
 
 
