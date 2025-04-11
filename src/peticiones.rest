@@ -8,8 +8,8 @@ POST {{host}}{{port}}/api/usuarios
 Content-Type: application/json
 
 {
-    "nombre": "cc",
-    "email": "cc@gmail.com",
+    "nombre": "ccc",
+    "email": "ccc@gmail.com",
     "password": "1122211"
 }
 

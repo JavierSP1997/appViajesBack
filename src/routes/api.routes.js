@@ -1,4 +1,4 @@
-const { checkToken } = require("../middlewares/auth.middlewares");
+// const { checkToken } = require("../middlewares/auth.middlewares");
 
 const router = require("express").Router();
 
