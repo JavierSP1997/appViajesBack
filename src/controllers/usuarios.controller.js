@@ -3,6 +3,12 @@ const { createToken } = require("../helpers/utils");
 const bcrypt = require("bcryptjs"); //npm install bcryptjs = Tiene 2 funciones que nos sirven: hash y compare
 
 const register = async (req, res, next) => {
+  console.log("pass sin encriptar:", req.body.password);
+
+  req.body.password = bcrypt.hashSync(req.body.password, 8); //Salt: dificultad del encriptado de password, usar entre 8 y 12 de dificultad
+
+  console.log("pass encriptada:", req.body.password);
+
   try {
     const result = await usuariosModel.insert(req.body);
     const usuario = await usuariosModel.selectById(result.insertId);
