@@ -8,9 +8,9 @@ POST {{host}}{{port}}/api/usuarios
 Content-Type: application/json
 
 {
-    "nombre": "ccc",
-    "email": "ccc@gmail.com",
-    "password": "1122211"
+    "nombre": "tres",
+    "email": "tres@gmail.com",
+    "password": "333333"
 }
 
 ### logar un usuario existente
