@@ -2,6 +2,15 @@ const usuariosModel = require("../models/usuarios.model");
 const { createToken } = require("../helpers/utils");
 const bcrypt = require("bcryptjs"); //npm install bcryptjs = Tiene 2 funciones que nos sirven: hash y compare
 
+const getAll = async (req, res, next) => {
+  try {
+    const usuarios = await usuariosModel.selectAll();
+    res.json(usuarios);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const register = async (req, res, next) => {
   console.log("pass sin encriptar:", req.body.password);
 
@@ -71,4 +80,4 @@ const getOne = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login, updateUser, remove, getOne };
+module.exports = { register, login, updateUser, remove, getOne, getAll };
