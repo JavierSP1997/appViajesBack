@@ -61,4 +61,14 @@ const remove = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login, updateUser, remove };
+const getOne = async (req, res, next) => {
+  const { usuarioId } = req.params;
+  try {
+    const usuario = await usuariosModel.selectById(usuarioId);
+    res.json(usuario);
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { register, login, updateUser, remove, getOne };
