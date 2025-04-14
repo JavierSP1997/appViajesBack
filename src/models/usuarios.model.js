@@ -1,10 +1,7 @@
 const db = require("../config/db.config");
 
-const insert = async ({ nombre, email, password, imagen }) => {
-  const [result] = await db.query(
-    "insert into usuarios (nombre, email, password, imagen) values (?, ?, ?, ?)",
-    [nombre, email, password, imagen]
-  );
+const selectAll = async () => {
+  const [result] = await db.query("select * from usuarios");
   return result;
 };
 
@@ -25,6 +22,14 @@ const selectByEmail = async (email) => {
   return result[0];
 };
 
+const insert = async ({ nombre, email, password }) => {
+  const [result] = await db.query(
+    "insert into usuarios (nombre, email, password) values (?, ?, ?)",
+    [nombre, email, password]
+  );
+  return result;
+};
+
 const updateById = async (usuarioId, { nombre, email, password }) => {
   const [result] = await db.query(
     "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id_usuario = ?",
@@ -42,9 +47,10 @@ const deleteById = async (usuariosId) => {
 };
 
 module.exports = {
-  insert,
+  selectAll,
   selectById,
   selectByEmail,
+  insert,
   updateById,
   deleteById,
 };
