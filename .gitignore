@@ -1,8 +1,4 @@
 node_modules/
 package-lock.json
 .env
-<<<<<<< HEAD
 peticiones.rest
-=======
-peticiones.rest
->>>>>>> 1aa69322466e680485dd5d4c05703f2c22a58645
