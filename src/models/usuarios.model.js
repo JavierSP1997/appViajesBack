@@ -1,8 +1,8 @@
 const db = require("../config/db.config");
 
-const insert = async ({ nombre, email, password }) => {
+const insert = async ({ nombre, email, password,descripcion }) => {
   const [result] = await db.query(
-    "insert into usuarios (nombre, email, password) values (?, ?, ?, ?)",
+    "insert into usuarios (nombre, email, password, descripcion) values (?, ?, ?, ?)",
     [nombre, email, password, descripcion]
   );
   return result;
@@ -33,7 +33,7 @@ const selectByEmail = async (email) => {
 const updateById = async (usuarioId, { nombre, email, password }) => {
   const [result] = await db.query(
     "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id_usuario = ?",
-    [nombre, email, password, imagen, usuarioId]
+    [nombre, email, password, usuarioId]
   );
   return result;
 };
