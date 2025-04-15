@@ -2,15 +2,6 @@ const usuariosModel = require("../models/usuarios.model");
 const { createToken } = require("../helpers/utils");
 const bcrypt = require("bcryptjs"); //npm install bcryptjs = Tiene 2 funciones que nos sirven: hash y compare
 
-const getAll = async (req, res, next) => {
-    try {
-        const usuarios = await usuariosModel.selectAll();
-        res.json(usuarios);
-    } catch (error) {
-        next(error);
-    }
-};
-
 const register = async (req, res, next) => {
     console.log("pass sin encriptar:", req.body.password);
 
@@ -28,12 +19,12 @@ const register = async (req, res, next) => {
       pets: req.body.pets || null, 
     };
 
-    const result = await usuariosModel.insert(usuarioData);
-    const usuario = await usuariosModel.selectById(result.insertId);
-    res.json(usuario);
-  } catch (error) {
-    next(error);
-  }
+        const result = await usuariosModel.insert(usuarioData);
+        const usuario = await usuariosModel.selectById(result.insertId);
+        res.json(usuario);
+    } catch (error) {
+        next(error);
+    }
 };
 
 const login = async (req, res, next) => {
@@ -59,6 +50,21 @@ const login = async (req, res, next) => {
     //EXITO
     //otorgamos un token de ingreso
     res.json({ message: "Login correcto", token: createToken(usuario) });
+};
+
+const checkEmail = async (req, res, next) => {
+    const { email } = req.query;
+    if (!email) {
+        return res.status(400).json({ error: "El email es obligatorio" });
+    }
+    try {
+        const usuario = await usuariosModel.selectByEmail(email);
+        const existe = usuario !== null;
+        return res.json({ existe });
+    } catch (error) {
+        console.error("Error al comprobar email:", error);
+        return res.status(500).json({ error: "Error del servidor" });
+    }
 };
 
 const updateUser = async (req, res, next) => {
@@ -92,4 +98,4 @@ const getOne = async (req, res, next) => {
     }
 };
 
-module.exports = { register, login, updateUser, remove, getOne };
+module.exports = { register, login, updateUser, remove, getOne, checkEmail };
