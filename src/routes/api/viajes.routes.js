@@ -1,6 +1,16 @@
 const router = require("express").Router();
-const { getAllTrips } = require("../../controllers/viajes.controller");
+const {
+  getAllViajes,
+  getViajeById,
+  registerViaje,
+  updateViaje,
+  removeViaje,
+} = require("../../controllers/viajes.controller");
 
-router.get("/", getAllTrips);
+router.get("/", getAllViajes);
+router.get("/:viajeId", getViajeById);
+router.post("/nuevo", registerViaje);
+router.put("/:viajeId", updateViaje);
+router.delete("/:viajeId", removeViaje);
 
 module.exports = router;

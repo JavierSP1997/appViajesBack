@@ -8,6 +8,11 @@ const insert = async ({ nombre, email, password }) => {
     return result;
 };
 
+const selectAll = async () => {
+    const [result] = await db.query("select * from usuarios");
+    return result;
+};
+
 const selectById = async (usuarioId) => {
     const [result] = await db.query(
         "select * from usuarios where id_usuario = ?",
@@ -28,7 +33,7 @@ const selectByEmail = async (email) => {
 const updateById = async (usuarioId, { nombre, email, password }) => {
     const [result] = await db.query(
         "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id_usuario = ?",
-        [nombre, email, password, usuarioId],
+        [nombre, email, password, imagen, usuarioId],
     );
     return result;
 };
@@ -43,9 +48,10 @@ const deleteById = async (usuariosId) => {
 };
 
 module.exports = {
-    insert,
+    selectAll,
     selectById,
     selectByEmail,
+    insert,
     updateById,
     deleteById,
 };
