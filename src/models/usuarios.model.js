@@ -30,12 +30,26 @@ const selectByEmail = async (email) => {
   return result[0];
 };
 
-const updateById = async (usuarioId, { nombre, email, password }) => {
+const updateById = async (usuarioId, { nombre, email, password, imagen, descripcion }) => {
   const [result] = await db.query(
-    "UPDATE usuarios SET nombre = ?, email = ?, password = ? WHERE id_usuario = ?",
-    [nombre, email, password, usuarioId]
+    `UPDATE usuarios 
+     SET nombre = ?, email = ?, password = ?, imagen = ?, descripcion = ? 
+     WHERE id_usuario = ?`,
+    [nombre, email, password, imagen, descripcion, usuarioId]
   );
-  return result;
+  const [updated] = await db.query("SELECT * FROM usuarios WHERE id_usuario = ?", [usuarioId]);
+
+  const usuario = updated[0];
+
+  return {
+    id: usuario.id_usuario,
+    nombre: usuario.nombre,
+    email: usuario.email,
+    password: usuario.password,
+    fecha_registro: usuario.fecha_registro,
+    imagen: usuario.imagen,
+    descripcion: usuario.descripcion
+  };
 };
 
 const deleteById = async (usuariosId) => {
