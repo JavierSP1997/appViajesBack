@@ -9,7 +9,11 @@
         "lint": "biome lint",
         "format": "biome check --write"
     },
-    "keywords": ["express", "init", "template"],
+    "keywords": [
+        "express",
+        "init",
+        "template"
+    ],
     "author": "Mario Girón Martín",
     "license": "MIT",
     "dependencies": {
