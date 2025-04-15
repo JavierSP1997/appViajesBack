@@ -14,7 +14,7 @@ const getAll = async (req, res, next) => {
 const register = async (req, res, next) => {
     console.log("pass sin encriptar:", req.body.password);
 
-  const hashedPassword = bcrypt.hashSync(req.body.password, 8); //Salt: dificultad del encriptado de password, usar entre 8 y 12 de dificultad
+  const hashedPassword = bcrypt.hashSync(req.body.password, 8); 
 
   console.log("pass encriptada:", req.body.password);
   try {
@@ -22,7 +22,10 @@ const register = async (req, res, next) => {
       nombre: req.body.nombre,
       email: req.body.email,
       password: hashedPassword,
-      descripcion: req.body.descripcion || null // opcional
+      descripcion: req.body.descripcion || null,
+      gender: req.body.gender || null,
+      hobbies: req.body.hobbies || null,
+      pets: req.body.pets || null, 
     };
 
     const result = await usuariosModel.insert(usuarioData);
