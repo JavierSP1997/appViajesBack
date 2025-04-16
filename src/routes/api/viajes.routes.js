@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const { checkToken } = require("../../middleware/auth.middlewares");
 const {
-  getAllViajes,
-  getViajeById,
-  registerViaje,
-  updateViaje,
-  removeViaje,
+    getAllViajes,
+    getViajeById,
+    registerViaje,
+    updateViaje,
+    removeViaje,
 } = require("../../controllers/viajes.controller");
 
 router.get("/", getAllViajes);
