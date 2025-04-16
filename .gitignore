@@ -1,7 +1,6 @@
 node_modules/
 package-lock.json
 .env
-peticiones.rest
 .vscode
 settings.json
 snapshot_db.sql
