@@ -4,3 +4,4 @@ package-lock.json
 peticiones.rest
 .vscode
 settings.json
+snapshot_db.sql
