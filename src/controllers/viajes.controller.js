@@ -35,6 +35,8 @@ const getViajeById = async (req, res, next) => {
 
 const registerViaje = async (req, res, next) => {
   try {
+    console.log(req.usuario)
+    req.body.usuarios_id_usuario = req.usuario.id_usuario;
     const newViaje = await viajesModel.insert(req.body);
     res.status(201).json({
       message: "Viaje registrado con éxito",

@@ -2,6 +2,7 @@ const db = require("../config/db.config");
 
 const insert = async ({
   nombre_viaje,
+  usuarios_id_usuario,
   fecha_inicio,
   fecha_fin,
   coste_por_persona,
@@ -11,9 +12,10 @@ const insert = async ({
   imagen,
 }) => {
   const [result] = await db.query(
-    "INSERT INTO viajes (nombre_viaje, fecha_inicio, fecha_fin, coste_por_persona, personas_minimas, localizacion, itinerario, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO viajes (nombre_viaje, usuarios_id_usuario, fecha_inicio, fecha_fin, coste_por_persona, personas_minimas, localizacion, itinerario, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       nombre_viaje,
+      usuarios_id_usuario,
       fecha_inicio,
       fecha_fin,
       coste_por_persona,

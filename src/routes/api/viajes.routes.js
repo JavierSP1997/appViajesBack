@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { checkToken } = require("../../middleware/auth.middlewares");
 const {
   getAllViajes,
   getViajeById,
@@ -9,8 +10,8 @@ const {
 
 router.get("/", getAllViajes);
 router.get("/:viajeId", getViajeById);
-router.post("/nuevo", registerViaje);
-router.put("/:viajeId", updateViaje);
-router.delete("/:viajeId", removeViaje);
+router.post("/nuevo", checkToken, registerViaje);
+router.put("/:viajeId", checkToken, updateViaje);
+router.delete("/:viajeId", checkToken, removeViaje);
 
 module.exports = router;

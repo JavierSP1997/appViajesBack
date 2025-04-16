@@ -13,6 +13,7 @@ const register = async (req, res, next) => {
       nombre: req.body.nombre,
       email: req.body.email,
       password: hashedPassword,
+      imagen: req.body.imagen || null,
       descripcion: req.body.descripcion || null,
       gender: req.body.gender || null,
       hobbies: req.body.hobbies || null,

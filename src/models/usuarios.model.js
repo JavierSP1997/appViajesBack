@@ -1,9 +1,9 @@
 const db = require("../config/db.config");
 
-const insert = async ({ nombre, email, password, descripcion, gender, hobbies, pets }) => {
+const insert = async ({ nombre, email, password, imagen, descripcion, gender, hobbies, pets }) => {
   const [result] = await db.query(
-    "INSERT INTO usuarios (nombre, email, password, descripcion, gender, hobbies, pets) VALUES (?, ?, ?, ?, ?, ?, ?)",
-    [nombre, email, password, descripcion, gender, hobbies, pets]
+    "INSERT INTO usuarios (nombre, email, password, imagen, descripcion, gender, hobbies, pets) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    [nombre, email, password, imagen, descripcion, gender, hobbies, pets]
   );
   return result;
 };
