@@ -2,6 +2,7 @@ const db = require("../config/db.config");
 
 const insert = async ({
   nombre_viaje,
+  usuarios_id_usuario,
   fecha_inicio,
   fecha_fin,
   coste_por_persona,
@@ -11,9 +12,10 @@ const insert = async ({
   imagen,
 }) => {
   const [result] = await db.query(
-    "INSERT INTO viajes (nombre_viaje, fecha_inicio, fecha_fin, coste_por_persona, personas_minimas, localizacion, itinerario, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO viajes (nombre_viaje, usuarios_id_usuario, fecha_inicio, fecha_fin, coste_por_persona, personas_minimas, localizacion, itinerario, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
     [
       nombre_viaje,
+      usuarios_id_usuario,
       fecha_inicio,
       fecha_fin,
       coste_por_persona,
@@ -74,4 +76,21 @@ const deleteById = async (viajeId) => {
   return result.affectedRows > 0;
 };
 
-module.exports = { insert, selectAll, selectById, updateById, deleteById };
+const selectParticipantesByViajeId = async (viajeId) => {
+  const [result] = await db.query(
+    `
+    SELECT 
+      u.id_usuario,
+      u.nombre,
+      u.imagen,
+      p.status
+    FROM participantes p
+    INNER JOIN usuarios u ON p.id_usuario = u.id_usuario
+    WHERE p.id_viaje = ?
+    `,
+    [viajeId]
+  );
+  return result;
+};
+
+module.exports = { insert, selectAll, selectById, updateById, deleteById, selectParticipantesByViajeId };
