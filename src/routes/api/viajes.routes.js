@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const {
-  getAllViajes,
-  getViajeById,
-  registerViaje,
-  updateViaje,
-  removeViaje,
+    getAllViajes,
+    getViajeById,
+    registerViaje,
+    updateViaje,
+    removeViaje,
 } = require("../../controllers/viajes.controller");
 
 router.get("/", getAllViajes);
