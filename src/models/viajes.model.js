@@ -74,4 +74,21 @@ const deleteById = async (viajeId) => {
   return result.affectedRows > 0;
 };
 
-module.exports = { insert, selectAll, selectById, updateById, deleteById };
+const selectParticipantesByViajeId = async (viajeId) => {
+  const [result] = await db.query(
+    `
+    SELECT 
+      u.id_usuario,
+      u.nombre,
+      u.imagen,
+      p.status
+    FROM participantes p
+    INNER JOIN usuarios u ON p.id_usuario = u.id_usuario
+    WHERE p.id_viaje = ?
+    `,
+    [viajeId]
+  );
+  return result;
+};
+
+module.exports = { insert, selectAll, selectById, updateById, deleteById, selectParticipantesByViajeId };
