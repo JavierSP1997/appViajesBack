@@ -1,6 +1,7 @@
 @host = http://localhost:
 @port = 3000
 
+
 ### Usuarios API ###
 GET {{host}}{{port}}/api/usuarios
 
@@ -40,17 +41,26 @@ Content-Type: application/json
 ### borrar un usuario existente
 DELETE {{host}}{{port}}/api/usuarios/13
 
+
+
 ### Viajes API ###
 ### ver todos los viajes
 GET {{host}}{{port}}/api/viajes
 
+
+### ver viaje by id
+GET {{host}}{{port}}/api/viajes/3
+
+
+
+### Peticiones API ###
 
 ### Obtener comentarios
 GET {{host}}{{port}}/api/comentarios/1
 
 
 ### Crear comentario
-POST http://localhost:3000/api/comentarios/1
+POST {{host}}{{port}}/api/comentarios/1
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3NzE0MH0.rV1vytQPAe3Xi7u3J1Ro4LuPnvaURKGLsvq8cL-j8W8
 
