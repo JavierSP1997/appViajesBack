@@ -49,7 +49,7 @@ GET {{host}}{{port}}/api/viajes
 
 
 ### ver viaje by id
-GET {{host}}{{port}}/api/viajes/3
+GET {{host}}{{port}}/api/viajes/4
 
 
 

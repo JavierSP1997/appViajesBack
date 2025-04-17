@@ -6,12 +6,14 @@ const {
     updateUser,
     remove,
     getOne,
+    getPublicById,  // controlador para datos públicos
     checkEmail,
 } = require("../../controllers/usuarios.controller");
 const { checkToken } = require("../../middleware/auth.middlewares");
 const { checkUsuarioId } = require("../../middleware/usuario.middleware");
 
 router.get("/", checkToken, getOne);
+router.get("/:usuarioId/public", getPublicById);
 router.get("/check-email", checkEmail);
 router.post("/register", register);
 router.post("/login", login);
