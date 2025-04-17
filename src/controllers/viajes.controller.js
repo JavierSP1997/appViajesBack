@@ -1,4 +1,5 @@
 const viajesModel = require("../models/viajes.model");
+const { getUsuarioPublicoById } = require("../models/usuarios.model");
 
 const getAllViajes = async (req, res, next) => {
     try {
@@ -16,9 +17,10 @@ const getViajeById = async (req, res, next) => {
         const viaje = viajeResult[0];
         if (!viaje) {
           return res.status(404).json({ message: "Viaje no encontrado" });}
+          const anfitrion = await getUsuarioPublicoById(viaje.usuario_id);
         const participantes = await viajesModel.selectParticipantesByViajeId(viajeId);
         res.json({
-          ...viaje, participantes,
+          ...viaje, anfitrion, participantes,
         });
     
     } catch (error) {next(error);}

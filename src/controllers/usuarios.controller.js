@@ -99,32 +99,4 @@ const getOne = async (req, res, next) => {
     }
 };
 
-const getPublicById = async (req, res, next) => {
-    try {
-        // Recuperamos el usuario con los datos filtrados
-        const usuario = await usuariosModel.selectById(req.params.usuarioId);
-        
-        if (!usuario) {
-            return res.status(404).json({ message: "Usuario no encontrado" });
-        }
-
-        // Filtramos los campos que queremos devolver
-        const usuarioPublico = {
-            id: usuario.id_usuario,
-            nombre: usuario.nombre,
-            email: usuario.email,
-            fecha_registro: usuario.fecha_registro,
-            imagen: usuario.imagen || null,
-            descripcion: usuario.descripcion || null,
-            gender: usuario.gender || null,
-            hobbies: usuario.hobbies || null,
-            pets: usuario.pets || null
-        };
-
-        return res.json(usuarioPublico);
-    } catch (error) {
-        next(error);
-    }
-};
-
-module.exports = { register, login, updateUser, remove, getOne, getPublicById, checkEmail };
+module.exports = { register, login, updateUser, remove, getOne, checkEmail };
