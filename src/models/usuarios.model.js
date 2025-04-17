@@ -62,24 +62,6 @@ const deleteById = async (usuariosId) => {
   return result;
 };
 
-async function getUsuarioPublicoById(usuarioId) {
-  const usuario = await selectById(usuarioId);
-  if (!usuario) return null;
-
-  return {
-    id: usuario.id_usuario,
-    nombre: usuario.nombre,
-    email: usuario.email,
-    fecha_registro: usuario.fecha_registro,
-    imagen: usuario.imagen || null,
-    descripcion: usuario.descripcion || null,
-    gender: usuario.gender || null,
-    hobbies: usuario.hobbies || null,
-    pets: usuario.pets || null,
-  };
-}
-
-
 module.exports = {
   selectAll,
   selectById,
@@ -87,5 +69,4 @@ module.exports = {
   insert,
   updateById,
   deleteById,
-  getUsuarioPublicoById
 };

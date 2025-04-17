@@ -1,5 +1,5 @@
 const viajesModel = require("../models/viajes.model");
-const { getUsuarioPublicoById } = require("../models/usuarios.model");
+const usuariosModel = require("../models/usuarios.model");
 
 const getAllViajes = async (req, res, next) => {
     try {
@@ -12,19 +12,44 @@ const getAllViajes = async (req, res, next) => {
 
 const getViajeById = async (req, res, next) => {
     try {
-        const viajeId = req.params.viajeId;
-        const viajeResult = await viajesModel.selectById(viajeId);
-        const viaje = viajeResult[0];
-        if (!viaje) {
-          return res.status(404).json({ message: "Viaje no encontrado" });}
-          const anfitrion = await getUsuarioPublicoById(viaje.usuario_id);
-        const participantes = await viajesModel.selectParticipantesByViajeId(viajeId);
-        res.json({
-          ...viaje, anfitrion, participantes,
-        });
-    
-    } catch (error) {next(error);}
-};
+      const viajeId = req.params.viajeId;
+  
+      const viajeResult = await viajesModel.selectById(viajeId);
+      const viaje = viajeResult[0];
+  
+      if (!viaje) {
+        return res.status(404).json({ message: "Viaje no encontrado" });
+      }
+  
+      const participantes = await viajesModel.selectParticipantesByViajeId(viajeId);
+  
+      // Obtener datos públicos del anfitrión directamente
+      const usuario = await usuariosModel.selectById(viaje.usuarios_id_usuario);
+  
+      const anfitrion = usuario
+        ? {
+            id: usuario.id_usuario,
+            nombre: usuario.nombre,
+            email: usuario.email,
+            fecha_registro: usuario.fecha_registro,
+            imagen: usuario.imagen || null,
+            descripcion: usuario.descripcion || null,
+            gender: usuario.gender || null,
+            hobbies: usuario.hobbies || null,
+            pets: usuario.pets || null
+          }
+        : null;
+  
+      res.json({
+        ...viaje,
+        anfitrion,
+        participantes
+      });
+  
+    } catch (error) {
+      next(error);
+    }
+  };
 
 const registerViaje = async (req, res, next) => {
     try {
