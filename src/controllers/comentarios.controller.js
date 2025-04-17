@@ -17,15 +17,16 @@ const obtenerComentarios = async (req, res) => {
 const agregarComentario = async (req, res) => {
     try {
         const { viajeId } = req.params;
-        const { usuarios_id_usuario, comentario } = req.body;
+        const { comentario } = req.body;
+        const userId = req.usuario.id_usuario; // ← este es el ID del token
 
-        if (!usuarios_id_usuario || !comentario?.trim()) {
-            return res.status(400).json({ message: "Datos incompletos" });
+        if (!comentario?.trim()) {
+            return res.status(400).json({ message: "Comentario vacío" });
         }
 
         const insertId = await Comentario.createComment(
             viajeId,
-            usuarios_id_usuario,
+            userId,
             comentario.trim(),
         );
 
