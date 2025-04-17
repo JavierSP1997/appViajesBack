@@ -46,11 +46,11 @@ GET {{host}}{{port}}/api/viajes
 
 
 ### Obtener comentarios
-GET {{host}}{{port}}/api/viajes/1/comentarios
+GET {{host}}{{port}}/api/comentarios/1
 
 
 ### Crear comentario
-POST http://localhost:3000/api/viajes/1/comentarios
+POST http://localhost:3000/api/comentarios/1
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3NzE0MH0.rV1vytQPAe3Xi7u3J1Ro4LuPnvaURKGLsvq8cL-j8W8
 
