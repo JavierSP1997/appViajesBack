@@ -98,5 +98,14 @@ const getOne = async (req, res, next) => {
         next(error);
     }
 };
+const getPublicOne = async (req, res, next) => {
+    
+    try {
+        const usuario = await usuariosModel.publicSelectById(req.params.usuarioId);
+        res.json(usuario);
+    } catch (error) {
+        next(error);
+    }
+};
 
-module.exports = { register, login, updateUser, remove, getOne, checkEmail };
+module.exports = { register, login, updateUser, remove, getOne, getPublicOne, checkEmail };
