@@ -44,11 +44,16 @@ const createReview = async (
     review,
     fecha,
 ) => {
-    const [result] = await db.query(
-        "INSERT INTO reviews (usuarios_id_usuario, viajes_id_viaje, puntuacion, review, fecha) VALUES (?, ?, ?, ?, ?)",
-        [usuarios_id_usuario, viajes_id_viaje, puntuacion, review, fecha],
-    );
-    return result.insertId;
+    try {
+        const [result] = await db.query(
+            "INSERT INTO review (usuarios_id_usuario, viajes_id_viaje, puntuacion, review, fecha) VALUES (?, ?, ?, ?, ?)",
+            [usuarios_id_usuario, viajes_id_viaje, puntuacion, review, fecha],
+        );
+        return result.insertId; // Devuelve el ID de la nueva review insertada
+    } catch (error) {
+        console.error("Error al insertar la review: ", error); // Más detalles del error
+        throw new Error("Error al insertar la review");
+    }
 };
 
 // Actualizar una review

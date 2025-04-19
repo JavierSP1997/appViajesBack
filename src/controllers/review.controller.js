@@ -33,7 +33,20 @@ const getByViaje = async (req, res) => {
 const create = async (req, res) => {
     const { usuarios_id_usuario, viajes_id_viaje, puntuacion, review, fecha } =
         req.body;
+
+    // Verifica que todos los datos necesarios estén presentes
+    if (
+        !usuarios_id_usuario ||
+        !viajes_id_viaje ||
+        !puntuacion ||
+        !review ||
+        !fecha
+    ) {
+        return res.status(400).json({ error: "Faltan datos requeridos" });
+    }
+
     try {
+        // Inserta la nueva review en la base de datos
         const id = await Review.createReview(
             usuarios_id_usuario,
             viajes_id_viaje,
@@ -43,6 +56,7 @@ const create = async (req, res) => {
         );
         res.status(201).json({ id, message: "Review creada con éxito" });
     } catch (error) {
+        console.error(error); // Muestra más detalles del error
         res.status(500).json({ error: "Error al crear la review" });
     }
 };
