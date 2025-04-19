@@ -26,7 +26,7 @@ const getReviewsByViajeWithUsuario = async (viajeId) => {
         `
     SELECT r.id_review, r.puntuacion, r.review, r.fecha,
            u.id_usuario, u.nombre AS nombre_usuario
-    FROM reviews r
+    FROM review r
     JOIN usuarios u ON r.usuarios_id_usuario = u.id_usuario
     WHERE r.viajes_id_viaje = ?
     ORDER BY r.fecha DESC

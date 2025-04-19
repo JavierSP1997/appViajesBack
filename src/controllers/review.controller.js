@@ -28,6 +28,17 @@ const getByViaje = async (req, res) => {
         });
     }
 };
+const getByViajeConUsuario = async (req, res) => {
+    try {
+        const { viajeId } = req.params;
+        const reviews = await Review.getReviewsByViajeWithUsuario(viajeId);
+        res.json(reviews);
+    } catch (error) {
+        res.status(500).json({
+            message: "Error al obtener las reviews con usuario",
+        });
+    }
+};
 
 // Crear una nueva review
 const create = async (req, res) => {
@@ -87,6 +98,7 @@ const remove = async (req, res) => {
 module.exports = {
     getAll,
     getByViaje,
+    getByViajeConUsuario,
     create,
     update,
     remove,
