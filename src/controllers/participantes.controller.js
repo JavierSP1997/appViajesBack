@@ -1,2 +1,4 @@
 const participantesModel = require("../models/participantes.model");
-module.exports = {};
+const viajesModel = require("../models/viajes.model");
+
+module.exports = { participar };
