@@ -10,8 +10,8 @@ POST {{host}}{{port}}/api/usuarios/register
 Content-Type: application/json
 
 {
-    "nombre": "chipi",
-    "email": "chipi@gmail.com",
+    "nombre": "xuvi",
+    "email": "xuvito@gmail.com",
     "password": "13456"
 }
 
@@ -23,8 +23,8 @@ POST {{host}}{{port}}/api/usuarios/login
 Content-Type: application/json
 
 {
-    "nombre": "chipi",
-    "email": "chipi@gmail.com",
+    "nombre": "xuvi",
+    "email": "xuvito@gmail.com",
     "password": "13456"
 }
 
@@ -69,3 +69,42 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3
   "usuarios_id_usuario": 3,
   "comentario": "¡Una experiencia espectacular!"
 }
+
+
+### Reviews API ###
+
+GET http://localhost:3000/api/reviews/viaje/1
+
+### Obtener todas las reviews
+GET {{host}}{{port}}/api/reviews
+
+### Obtener reviews de un viaje específico (ej. viaje con id 1)
+GET {{host}}{{port}}/api/reviews/viaje/1
+
+### Crear una nueva review
+POST {{host}}{{port}}/api/reviews
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3MTk5MH0.Zhvd7n2wCbfi5ecNgSajV66qaikIkrDy1BSp8pNq9b0
+
+{
+  "usuarios_id_usuario": 18,
+  "viajes_id_viaje": 1,
+  "puntuacion": 5,
+  "review": "Increíble experiencia, lo recomiendo mucho!",
+  "fecha": "2025-04-19"
+}
+
+### Actualizar una review (ej. id 2)
+PUT {{host}}{{port}}/api/reviews/2
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3MTk5MH0.Zhvd7n2wCbfi5ecNgSajV66qaikIkrDy1BSp8pNq9b0
+
+{
+  "puntuacion": 4,
+  "review": "Muy bueno, aunque podría mejorar en algunos aspectos.",
+  "fecha": "2025-04-19"
+}
+
+### Eliminar una review (ej. id 2)
+DELETE {{host}}{{port}}/api/reviews/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3MTk5MH0.Zhvd7n2wCbfi5ecNgSajV66qaikIkrDy1BSp8pNq9b0

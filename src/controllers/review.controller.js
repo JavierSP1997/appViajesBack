@@ -14,9 +14,15 @@ const getAll = async (req, res) => {
 const getByViaje = async (req, res) => {
     const { viajeId } = req.params;
     try {
-        const reviews = await Review.getReviewsByViajeWithUsuario(viajeId);
+        const reviews = await Review.getReviewsByViajeId(viajeId);
+        if (reviews.length === 0) {
+            return res
+                .status(404)
+                .json({ error: "No hay reviews para este viaje" });
+        }
         res.json(reviews);
     } catch (error) {
+        console.error(error); // Muestra el error en la consola para más detalles
         res.status(500).json({
             error: "Error al obtener las reviews del viaje",
         });

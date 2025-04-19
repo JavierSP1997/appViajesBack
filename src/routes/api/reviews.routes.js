@@ -1,5 +1,4 @@
 const router = require("express").Router();
-
 const {
     getAll,
     getByViaje,
@@ -7,24 +6,15 @@ const {
     update,
     remove,
 } = require("../../controllers/review.controller");
+const { checkToken } = require("../../middleware/auth.middlewares");
 
-// Si en el futuro querés proteger rutas, podés usar estos middlewares:
-// const { checkToken } = require("../../middleware/auth.middlewares");
-// const { checkReviewId } = require("../../middleware/review.middleware"); // si lo creás
-
-// Obtener todas las reviews
+// Rutas públicas
 router.get("/", getAll);
-
-// Obtener reviews por ID de viaje con nombre de usuario
 router.get("/viaje/:viajeId", getByViaje);
 
-// Crear una nueva review
-router.post("/", create);
-
-// Actualizar una review
-router.put("/:id", update);
-
-// Eliminar una review
-router.delete("/:id", remove);
+// Rutas protegidas
+router.post("/", checkToken, create);
+router.put("/:id", checkToken, update);
+router.delete("/:id", checkToken, remove);
 
 module.exports = router;

@@ -2,25 +2,22 @@ const db = require("../config/db.config");
 
 // Obtener todas las reviews
 const getAllReviews = async () => {
-    const [rows] = await db.query("SELECT * FROM reviews");
+    const [rows] = await db.query("SELECT * FROM review");
     return rows;
 };
 
 // Obtener una review por su ID
-const getReviewById = async (id) => {
-    const [rows] = await db.query("SELECT * FROM reviews WHERE id_review = ?", [
-        id,
-    ]);
-    return rows[0];
-};
-
-// Obtener reviews por ID de viaje
 const getReviewsByViajeId = async (viajeId) => {
-    const [rows] = await db.query(
-        "SELECT * FROM reviews WHERE viajes_id_viaje = ?",
-        [viajeId],
-    );
-    return rows;
+    try {
+        const [rows] = await db.query(
+            "SELECT * FROM review WHERE viajes_id_viaje = ?",
+            [viajeId],
+        );
+        return rows;
+    } catch (error) {
+        console.error("Error en la consulta SQL: ", error); // Agregar más detalles
+        throw new Error("Error al obtener las reviews del viaje");
+    }
 };
 
 // (Opcional) Obtener reviews por ID de viaje incluyendo nombre del usuario
@@ -57,19 +54,18 @@ const createReview = async (
 // Actualizar una review
 const updateReview = async (id_review, puntuacion, review, fecha) => {
     await db.query(
-        "UPDATE reviews SET puntuacion = ?, review = ?, fecha = ? WHERE id_review = ?",
+        "UPDATE review SET puntuacion = ?, review = ?, fecha = ? WHERE id_review = ?",
         [puntuacion, review, fecha, id_review],
     );
 };
 
 // Eliminar una review
 const deleteReview = async (id_review) => {
-    await db.query("DELETE FROM reviews WHERE id_review = ?", [id_review]);
+    await db.query("DELETE FROM review WHERE id_review = ?", [id_review]);
 };
 
 module.exports = {
     getAllReviews,
-    getReviewById,
     getReviewsByViajeId,
     getReviewsByViajeWithUsuario, // <- opcional si querés incluir nombre del usuario
     createReview,
