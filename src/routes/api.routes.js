@@ -7,6 +7,7 @@ router.use("/viajes", require("./api/viajes.routes"));
 router.use("/comentarios", require("./api/comentarios.routes"));
 router.use("/reviews", require("./api/reviews.routes"));
 
+router.use("/participantes", require("./api/participantes.routes"));
 /* router.use("/clientes", checkToken, require("./api/clientes.routes")); ruta de referencia para recordar de incluir webtoken en el paso a area  privada*/
 
 module.exports = router;

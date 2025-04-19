@@ -20,6 +20,17 @@ const selectById = async (usuarioId) => {
   if (result.length === 0) return null;
   return result[0];
 };
+const publicSelectById = async (usuarioId) => {
+
+  const [result] = await db.query(
+    "select id_usuario, nombre, fecha_registro, imagen, descripcion, " + 
+    "gender, hobbies, pets  from usuarios where id_usuario = ?",
+    [usuarioId]
+  );
+  if (result.length === 0) return null;
+  return result[0];
+};
+
 
 const selectByEmail = async (email) => {
   const [result] = await db.query("select * from usuarios where email = ?", [
@@ -65,6 +76,7 @@ const deleteById = async (usuariosId) => {
 module.exports = {
   selectAll,
   selectById,
+  publicSelectById,
   selectByEmail,
   insert,
   updateById,
