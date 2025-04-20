@@ -20,17 +20,16 @@ const getReviewsByViajeId = async (viajeId) => {
     }
 };
 
-// (Opcional) Obtener reviews por ID de viaje incluyendo nombre del usuario
 const getReviewsByViajeWithUsuario = async (viajeId) => {
     const [rows] = await db.query(
         `
-    SELECT r.id_review, r.puntuacion, r.review, r.fecha,
-           u.id_usuario, u.nombre AS nombre_usuario
-    FROM review r
-    JOIN usuarios u ON r.usuarios_id_usuario = u.id_usuario
-    WHERE r.viajes_id_viaje = ?
-    ORDER BY r.fecha DESC
-  `,
+        SELECT r.id_review, r.puntuacion, r.review, r.fecha,
+               u.id_usuario AS usuarios_id_usuario, u.nombre AS nombre_usuario
+        FROM review r
+        JOIN usuarios u ON r.usuarios_id_usuario = u.id_usuario
+        WHERE r.viajes_id_viaje = ?
+        ORDER BY r.fecha DESC
+        `,
         [viajeId],
     );
     return rows;

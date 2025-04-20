@@ -75,13 +75,6 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3
 
 GET http://localhost:3000/api/reviews/viaje/1
 
-### Obtener todas las reviews
-GET {{host}}{{port}}/api/reviews
-
-### Obtener reviews de un viaje específico (ej. viaje con id 1)
-GET {{host}}{{port}}/api/reviews/viaje/1
-
-
 ###
 GET http://localhost:3000/api/reviews/viaje/1/usuario
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3MTk5MH0.Zhvd7n2wCbfi5ecNgSajV66qaikIkrDy1BSp8pNq9b0
