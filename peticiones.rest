@@ -63,7 +63,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIy
 
 
 {
-  "usuarios_id_usuario": 18,
+  
   "comentario": "¡Una experiencia espectacular!"
 }
 
@@ -72,7 +72,7 @@ PUT {{host}}{{port}}/api/comentarios/1/36
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
 
-{"usuarios_id_usuario": 18,
+{
   "comentario": "¡SIUUUUUUU!"
 }
 
