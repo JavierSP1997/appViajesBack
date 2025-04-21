@@ -70,6 +70,20 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3
   "comentario": "¡Una experiencia espectacular!"
 }
 
+### Actualizar comentario
+PUT {{host}}{{port}}/api/comentarios/10
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3NzE0MH0.rV1vytQPAe3Xi7u3J1Ro4LuPnvaURKGLsvq8cL-j8W8
+
+{
+  "comentario": "Actualice mi opinión, fue aún mejor de lo que pensaba."
+}
+
+
+### Eliminar comentario
+DELETE {{host}}{{port}}/api/comentarios/10
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImlhdCI6MTc0NDg3NzE0MH0.rV1vytQPAe3Xi7u3J1Ro4LuPnvaURKGLsvq8cL-j8W8
+
 
 ### Reviews API ###
 
