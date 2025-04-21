@@ -2,14 +2,17 @@ const router = require("express").Router();
 const {
     obtenerComentarios,
     agregarComentario,
-    editarComentario,
     eliminarComentario,
+    editarComentario,
 } = require("../../controllers/comentarios.controller");
 const { checkToken } = require("../../middleware/auth.middlewares");
 
 router.get("/:viajeId", obtenerComentarios);
+
 router.post("/:viajeId", checkToken, agregarComentario);
-router.put("/:idComentario", checkToken, editarComentario);
-router.delete("/:idComentario", checkToken, eliminarComentario);
+
+router.put("/:viajeId/:comentarioId", checkToken, editarComentario);
+
+router.delete("/:viajeId/:comentarioId", checkToken, eliminarComentario);
 
 module.exports = router;
