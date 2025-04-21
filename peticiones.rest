@@ -23,9 +23,9 @@ POST {{host}}{{port}}/api/usuarios/login
 Content-Type: application/json
 
 {
-    "nombre": "xuvi",
-    "email": "xuvito@gmail.com",
-    "password": "13456"
+    "nombre": "lolo2",
+    "email": "l@gmail.com",
+    "password": "Gian1234"
 }
 
 ### Editar un usuario existente
@@ -115,3 +115,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3
 ### Eliminar una review (ej. id 2)
 DELETE {{host}}{{port}}/api/reviews/2
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3MTk5MH0.Zhvd7n2wCbfi5ecNgSajV66qaikIkrDy1BSp8pNq9b0
+
+
+
+
+
+### Participantes API ###
+### Actualizar estado de participante
+PUT {{host}}{{port}}/api/participantes/13/viaje/10
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImlhdCI6MTc0NTIzNTg2M30.fPTJdGtb0bIx4nKxJRBMmfX7p8zVCPealGIH06zUBcw
+
+{
+  "estado": "pendiente"
+}

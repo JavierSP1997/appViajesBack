@@ -10,6 +10,7 @@ const insert = async (idUsuario, idViaje, status ) => {
   );
   return result;
 };
+
 const deleteByUsuarioAndViaje = async (idUsuario, idViaje) => {
   const [result] = await db.query(
     "DELETE FROM participantes WHERE id_usuario = ? AND id_viaje = ?",
@@ -18,5 +19,13 @@ const deleteByUsuarioAndViaje = async (idUsuario, idViaje) => {
   return result;
 };
 
-module.exports = { insert, deleteByUsuarioAndViaje };
+const updateStatus = async (idUsuario, idViaje, nuevoStatus) => {
+  const [result] = await db.query(
+    "UPDATE participantes SET status = ? WHERE id_usuario = ? AND id_viaje = ?",
+    [nuevoStatus, idUsuario, idViaje]
+  );
+  return result;
+};
+
+module.exports = { insert, deleteByUsuarioAndViaje, updateStatus };
 
