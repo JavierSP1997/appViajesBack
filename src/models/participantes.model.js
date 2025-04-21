@@ -10,4 +10,13 @@ const insert = async (idUsuario, idViaje, status ) => {
   );
   return result;
 };
-module.exports = {insert};
+const deleteByUsuarioAndViaje = async (idUsuario, idViaje) => {
+  const [result] = await db.query(
+    "DELETE FROM participantes WHERE id_usuario = ? AND id_viaje = ?",
+    [idUsuario, idViaje]
+  );
+  return result;
+};
+
+module.exports = { insert, deleteByUsuarioAndViaje };
+

@@ -15,4 +15,23 @@ const participar = async (req, res, next) => {
       next(error);
     }
   };
-module.exports = { participar };
+
+  const abandonar = async (req, res) => {
+    const idUsuario = req.usuario.id_usuario;
+    const idViaje = req.params.viajeId;
+  
+    try {
+      console.log("Intentando abandonar viaje", { idViaje, idUsuario });
+  
+      const resultado = await participantesModel.deleteByUsuarioAndViaje(idUsuario, idViaje);
+      
+      if (resultado.affectedRows === 0) {
+        return res.status(404).json({ message: "No estabas apuntado a este viaje" });
+      }
+      res.status(200).json({ message: "Has abandonado el viaje con éxito" });
+    } catch (err) {
+      res.status(500).json({ message: "Error al abandonar el viaje" });
+    }
+  };
+
+module.exports = { participar, abandonar };
