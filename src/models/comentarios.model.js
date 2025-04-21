@@ -21,4 +21,22 @@ const createComment = async (viajeId, usuarioId, comentario) => {
     return result.insertId;
 };
 
-module.exports = { getByViajeId, createComment };
+const updateComment = async (comentarioid, nuevoComentario) => {
+    // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+    const [result] = await db.query(`UPDATE comentarios SET comentario = ?`, [
+        nuevoComentario,
+        comentarioid,
+    ]);
+    return result;
+};
+
+const deleteComment = async (comentarioid) => {
+    const [result] = await db.query(
+        // biome-ignore lint/style/noUnusedTemplateLiteral: <explanation>
+        `DELETE FROM comentarios WHERE id_comentario = ?`,
+        [comentarioid],
+    );
+    return result;
+};
+
+module.exports = { getByViajeId, createComment, updateComment, deleteComment };
