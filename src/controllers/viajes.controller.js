@@ -10,6 +10,21 @@ const getAllViajes = async (req, res, next) => {
     }
 };
 
+const getViajesByUsuarioId = async (req, res) => {
+    const { idUsuario } = req.params;
+
+    try {
+        const viajes = await viajesModel.selectByUsuarioId(idUsuario);
+
+        res.status(200).json(viajes);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            error: "Error al obtener los viajes del usuario",
+        });
+    }
+};
+
 const getViajeById = async (req, res, next) => {
     try {
         const viajeId = req.params.viajeId;
@@ -97,6 +112,7 @@ const removeViaje = async (req, res, next) => {
 
 module.exports = {
     getAllViajes,
+    getViajesByUsuarioId,
     getViajeById,
     registerViaje,
     updateViaje,
