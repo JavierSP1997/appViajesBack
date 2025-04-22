@@ -69,6 +69,14 @@ const updateById = async ({
     return result.affectedRows > 0;
 };
 
+const updateEstadoById = async (id_viaje, estado) => {
+    const [result] = await db.query(
+        "UPDATE viajes SET estado = ? WHERE id_viaje = ?",
+        [estado, id_viaje]
+    );
+    return result.affectedRows > 0;
+};
+
 const deleteById = async (id_viaje) => {
     const [result] = await db.query("DELETE FROM viajes WHERE id_viaje = ?", [
         id_viaje,
@@ -107,6 +115,7 @@ module.exports = {
     selectAll,
     selectById,
     updateById,
+    updateEstadoById,
     deleteById,
     selectParticipantesByViajeId,
     selectByUsuarioId,

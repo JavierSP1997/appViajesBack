@@ -110,6 +110,30 @@ const removeViaje = async (req, res, next) => {
     }
 };
 
+const finalizarViaje = async (req, res, next) => {
+    const { id_viaje } = req.params; // Obtén el ID del viaje desde los parámetros de la ruta
+
+    try {
+        // Verificamos si el viaje existe
+        const viaje = await viajesModel.selectById(id_viaje);
+
+        if (!viaje || viaje.length === 0) {
+            return res.status(404).json({ message: "Viaje no encontrado" });
+        }
+
+        // Actualizamos el estado del viaje a "finalizado"
+        const estadoActualizado = await viajesModel.updateEstadoById(id_viaje, 'finalizado');
+
+        if (estadoActualizado) {
+            res.json({ message: "El viaje ha sido finalizado correctamente" });
+        } else {
+            res.status(400).json({ message: "No se pudo actualizar el estado del viaje" });
+        }
+    } catch (error) {
+        next(error); // Manejo de errores
+    }
+};
+
 module.exports = {
     getAllViajes,
     getViajesByUsuarioId,
@@ -117,4 +141,5 @@ module.exports = {
     registerViaje,
     updateViaje,
     removeViaje,
+    finalizarViaje
 };
