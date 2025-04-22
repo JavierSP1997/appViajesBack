@@ -6,12 +6,15 @@ const obtenerNotificaciones = async (req, res) => {
 
   try {
     const misViajesCreados = await viajesModel.selectByUsuarioId(usuarioId);
-    const misViajesCreadosIds = misViajesCreados.map(v => { return v.id_viaje });
-    const notificaciones = await notificacionesModel.selectByIdsViaje(misViajesCreadosIds);
-
+    const misViajesCreadosIds = misViajesCreados.map((v) => {
+      return v.id_viaje;
+    });
+    const notificaciones = await notificacionesModel.selectByIdsViaje(
+      misViajesCreadosIds
+    );
 
     if (notificaciones.length === 0) {
-      return res.status(404).json({ message: "No tienes notificaciones." });
+      return res.status(200).json([]);
     }
     res.json(notificaciones);
   } catch (error) {
@@ -21,4 +24,3 @@ const obtenerNotificaciones = async (req, res) => {
 };
 
 module.exports = { obtenerNotificaciones };
-
