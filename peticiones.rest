@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
     "nombre": "xuvi",
-    "email": "xuvito@gmail.com",
+    "email": "xuvitoo@gmail.com",
     "password": "13456"
 }
 
@@ -23,9 +23,9 @@ POST {{host}}{{port}}/api/usuarios/login
 Content-Type: application/json
 
 {
-    "nombre": "lolo2",
-    "email": "l@gmail.com",
-    "password": "Gian1234"
+    "nombre": "xuvi",
+    "email": "xuvitoo@gmail.com",
+    "password": "13456"
 }
 
 ### Editar un usuario existente
@@ -55,12 +55,6 @@ GET {{host}}{{port}}/api/viajes/3
 ### eliminar viaje
 DELETE {{host}}{{port}}/api/viajes/9
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
-
-### cambiar estado de viaje
-PUT {{host}}{{port}}/api/viajes/5/finalizar
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
-
-
 
 
 ### Comentarios API ###
@@ -137,8 +131,16 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3
 ### Actualizar estado de participante
 PUT {{host}}{{port}}/api/participantes/13/viaje/10
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsImlhdCI6MTc0NTIzNTg2M30.fPTJdGtb0bIx4nKxJRBMmfX7p8zVCPealGIH06zUBcw
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc0NTMzMTAwNX0.dEtEL3XNYWkHo5WzldpD7ORPMIIJd-nBYz__7vBqdWI
 
 {
   "estado": "pendiente"
 }
+####
+POST {{host}}{{port}}/api/participantes/participar/3
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTEsImlhdCI6MTc0NTMzMTAwNX0.dEtEL3XNYWkHo5WzldpD7ORPMIIJd-nBYz__7vBqdWI
+
+### Obtener notificaciones de un usuario (por ejemplo, ID 49)
+GET http://localhost:3000/api/notificaciones/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTAsImlhdCI6MTc0NTMzOTc0OH0.iVZRFdHX2bo_f3lX44D14rarxRr_h4L6kpl5rltwywk
