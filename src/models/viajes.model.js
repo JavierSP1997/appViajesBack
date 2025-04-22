@@ -69,10 +69,11 @@ const updateById = async ({
     return result.affectedRows > 0;
 };
 
-const deleteById = async (viajeId) => {
+const deleteById = async (id_viaje) => {
     const [result] = await db.query("DELETE FROM viajes WHERE id_viaje = ?", [
-        viajeId,
+        id_viaje,
     ]);
+    console.log(result)
     return result.affectedRows > 0;
 };
 

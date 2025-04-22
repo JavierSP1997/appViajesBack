@@ -14,6 +14,6 @@ router.get("/usuario/:idUsuario", getViajesByUsuarioId);
 router.get("/:viajeId", getViajeById);
 router.post("/nuevo", checkToken, registerViaje);
 router.put("/:viajeId", checkToken, updateViaje);
-router.delete("/:viajeId", checkToken, removeViaje);
+router.delete("/:id_viaje", checkToken, removeViaje);
 
 module.exports = router;

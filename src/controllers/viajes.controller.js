@@ -99,7 +99,7 @@ const updateViaje = async (req, res, next) => {
 
 const removeViaje = async (req, res, next) => {
     try {
-        const deleted = await viajesModel.deleteById(req.params.id);
+        const deleted = await viajesModel.deleteById(req.params.id_viaje);
         if (deleted) {
             res.json({ message: "Viaje eliminado con éxito" });
         } else {

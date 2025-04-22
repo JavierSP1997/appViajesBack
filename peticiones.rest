@@ -52,6 +52,13 @@ GET {{host}}{{port}}/api/viajes
 GET {{host}}{{port}}/api/viajes/3
 
 
+### eliminar viaje
+DELETE {{host}}{{port}}/api/viajes/9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
+
+
+### Comentarios API ###
+
 ### Obtener comentarios
 GET {{host}}{{port}}/api/comentarios/1
 
@@ -61,9 +68,8 @@ POST {{host}}{{port}}/api/comentarios/1
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
 
-
 {
-  
+  "usuarios_id_usuario": 18,
   "comentario": "¡Una experiencia espectacular!"
 }
 
@@ -73,12 +79,15 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
 
 {
+  "usuarios_id_usuario": 18,
   "comentario": "¡SIUUUUUUU!"
 }
 
 ### Eliminar un comentario 
 DELETE {{host}}{{port}}/api/comentarios/1/35
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
+
+
 
 ### Reviews API ###
 
@@ -115,8 +124,6 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3
 ### Eliminar una review (ej. id 2)
 DELETE {{host}}{{port}}/api/reviews/2
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTA3MTk5MH0.Zhvd7n2wCbfi5ecNgSajV66qaikIkrDy1BSp8pNq9b0
-
-
 
 
 
