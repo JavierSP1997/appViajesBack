@@ -56,6 +56,12 @@ GET {{host}}{{port}}/api/viajes/3
 DELETE {{host}}{{port}}/api/viajes/9
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
 
+### cambiar estado de viaje
+PUT {{host}}{{port}}/api/viajes/5/finalizar
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImlhdCI6MTc0NTIyODU1OX0.pREvQZ-fMjJKIPhSOQQXbGLD2QI2uuAJ9FQ6iw7Q7oE
+
+
+
 
 ### Comentarios API ###
 
