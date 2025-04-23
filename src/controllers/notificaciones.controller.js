@@ -23,4 +23,22 @@ const obtenerNotificaciones = async (req, res) => {
   }
 };
 
-module.exports = { obtenerNotificaciones };
+const nuevaNotificacion  = async (req, res) => {
+
+  try {
+    const usuarioId = req.usuario.id_usuario;
+    const idViaje = req.body.idViaje;
+    const mensaje = req.body.mensaje;
+    const tipo = '';
+    const estado = req.body.estado;
+
+    notificacionesModel.insert(usuarioId, idViaje, mensaje, tipo, estado)
+    return res.status(200).json();
+      
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al insertar notificacion." });
+  }
+};
+
+module.exports = { obtenerNotificaciones, nuevaNotificacion };
