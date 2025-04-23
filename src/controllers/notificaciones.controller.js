@@ -41,4 +41,22 @@ const nuevaNotificacion  = async (req, res) => {
   }
 };
 
-module.exports = { obtenerNotificaciones, nuevaNotificacion };
+const actualizarNotificacion = async (req, res) => {
+
+  try {
+    const idNotificacion = req.params.idNotificacion;
+    const mensaje = req.body.mensaje;
+    const tipo = req.body.tipo;
+    const estado = req.body.estado;
+
+    notificacionesModel.update(idNotificacion, mensaje, tipo, estado)
+
+    return res.status(200).json();
+      
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar notificacion." });
+  }
+};
+
+module.exports = { obtenerNotificaciones, nuevaNotificacion, actualizarNotificacion };
