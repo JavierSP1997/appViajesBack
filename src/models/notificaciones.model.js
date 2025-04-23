@@ -10,10 +10,16 @@ const insert = async (idUsuario, idViaje, mensaje, tipo) => {
 
   return result;
 };
-
+//como se repite el select se hace una const
 const selectByUsuario = async (usuarioId) => {
   const query = "SELECT * FROM notificaciones WHERE id_usuario = ?";
   const [result] = await db.query(query, [usuarioId]);
+  return result;
+};
+
+const selectById = async (idNotifiacion) => {
+  const query = "SELECT * FROM notificaciones WHERE id_notificacion = ?";
+  const [result] = await db.query(query, [idNotifiacion]);
   return result;
 };
 
@@ -25,4 +31,18 @@ const selectByIdsViaje = async (ids_viaje) => {
   return result;
 };
 
-module.exports = { selectByUsuario,insert, selectByIdsViaje};
+const update = async (id_notificacion, mensaje, tipo, estado) => {
+  const query = `
+    UPDATE notificaciones
+    SET mensaje = ?, 
+        tipo = ?, 
+        estado = ?
+    WHERE id_notificacion = ?
+  `;
+  const [result] = await db.query(query, [mensaje, tipo, estado, id_notificacion]);
+  return result;
+};
+
+
+module.exports = { selectByUsuario,insert, selectByIdsViaje, update, selectById};
+
