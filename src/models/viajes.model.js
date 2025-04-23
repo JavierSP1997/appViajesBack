@@ -110,6 +110,20 @@ const selectByUsuarioId = async (idUsuario) => {
     return result;
 };
 
+const selectParticipadosPorUsuario = async (idUsuario) => {
+    const [result] = await db.query(
+      `
+      SELECT v.*
+      FROM viajes v
+      INNER JOIN participantes p ON v.id_viaje = p.id_viaje
+      WHERE p.id_usuario = ?
+      `,
+      [idUsuario]
+    );
+    return result;
+  };
+  
+
 module.exports = {
     insert,
     selectAll,
@@ -119,4 +133,5 @@ module.exports = {
     deleteById,
     selectParticipantesByViajeId,
     selectByUsuarioId,
+    selectParticipadosPorUsuario,
 };

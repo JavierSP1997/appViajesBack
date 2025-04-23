@@ -14,16 +14,28 @@ const getViajesByUsuarioId = async (req, res) => {
     const { idUsuario } = req.params;
 
     try {
-        const viajes = await viajesModel.selectByUsuarioId(idUsuario);
+        const creados = await viajesModel.selectByUsuarioId(idUsuario);
+        const participados = await viajesModel.selectParticipadosPorUsuario(idUsuario);
 
+        const creadosIds = creados.map(v => v.id_viaje);
+        const soloParticipados = participados.filter(v => !creadosIds.includes(v.id_viaje));
+    
+        const viajes = [...creados, ...soloParticipados];
+    
+        for (const viaje of viajes) {
+            const participantes = await viajesModel.selectParticipantesByViajeId(viaje.id_viaje);
+            viaje.participantes = participantes;
+        }
+    
         res.status(200).json(viajes);
-    } catch (err) {
+        } catch (err) {
         console.error(err);
         res.status(500).json({
             error: "Error al obtener los viajes del usuario",
         });
-    }
-};
+        }
+    };
+
 
 const getViajeById = async (req, res, next) => {
     try {
@@ -99,16 +111,31 @@ const updateViaje = async (req, res, next) => {
 
 const removeViaje = async (req, res, next) => {
     try {
-        const deleted = await viajesModel.deleteById(req.params.id_viaje);
+        const idViaje = req.params.id_viaje;
+        const idUsuario = req.usuario.id_usuario;
+
+        const viaje = await viajesModel.selectById(idViaje);
+
+        if (!viaje || viaje.length === 0) {
+            return res.status(404).json({ message: "Viaje no encontrado" });
+        }
+
+        if (viaje[0].usuarios_id_usuario !== idUsuario) {
+            return res.status(403).json({ message: "No tienes permiso para eliminar este viaje" });
+        }
+
+        const deleted = await viajesModel.deleteById(idViaje);
         if (deleted) {
             res.json({ message: "Viaje eliminado con éxito" });
         } else {
-            res.status(404).json({ message: "Viaje no encontrado" });
+            res.status(500).json({ message: "Error al eliminar el viaje" });
         }
-    } catch (error) {
+    
+        } catch (error) {
         next(error);
-    }
+        }
 };
+
 
 const finalizarViaje = async (req, res, next) => {
     const { id_viaje } = req.params; // Obtén el ID del viaje desde los parámetros de la ruta
