@@ -10,16 +10,6 @@ const participar = async (req, res, next) => {
       const viaje = await viajesModel.selectById(idViaje);
       if (!viaje) return res.status(404).json(); 
       await participantesModel.insert(idUsuario, idViaje, 'pendiente');
-// ******
-if (viaje.id_usuario !== idUsuario) {
-  const mensaje = `Un nuevo usuario quiere unirse a tu viaje: "${viaje.nombre}"`;
-  await notificacionesModel.insert(
-    viaje.id_usuario,  // ID del creador
-    idViaje,
-    mensaje,
-    "participacion"
-  );
-}
       res.json(); 
     } catch (error) {
       next(error);
